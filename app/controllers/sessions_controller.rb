@@ -6,11 +6,16 @@ class SessionsController < ApplicationController
 
 
   def create
-    user = User.find_by_credentials(params[:session][:email], params[:session][:password])
-    if user
-      sign_in(user)
+    @user = User.find_by_credentials(params[:session][:email], params[:session][:password])
+    if @user
+      if @user.activated
+        sign_in(@user)
 
-      redirect_to user_url(user)
+        redirect_to user_url(@user)
+      else
+        flash[:errors] = "that account is not active"
+        render :new
+      end
 
     else
       render :new

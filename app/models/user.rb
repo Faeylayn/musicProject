@@ -35,6 +35,6 @@ class User < ActiveRecord::Base
     pass.is_password?(value)
   end
 
-
+  
 
 end

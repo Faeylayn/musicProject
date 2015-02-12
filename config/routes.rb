@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    get '/activate' => 'users#activate'
+  end
+
   resource :session
   resources :bands do
     post '/albums/new' => 'albums#new'

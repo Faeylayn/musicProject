@@ -16,6 +16,12 @@
     <input type="submit" value="LOG OUT!">
 
   </form>
+
+
+  <% end %>
+  <% if flash[:errors] %>
+    <%= flash[:errors] %>
+
   <% end %>
 
 <%= yield %>
