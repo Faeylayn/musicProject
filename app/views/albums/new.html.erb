@@ -1,0 +1,22 @@
+<h1> Please submit a new Album </h1>
+
+
+<form action="<%= albums_url %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label> Name
+    <input type="text" name="album[album_name]" value="<%=@album.album_name %>">
+  </label>
+  <br>
+  <label> Studio Recording
+  <input type="radio" name="album[recording]" value="studio">
+</label>
+  <label> Live Recording
+  <input type="radio" name="album[recording]" value="live">
+</label>
+<input type="hidden" name="album[band_id]" value="<%= params[:band_id] %>">
+
+  <br>
+
+  <input type="submit" value="Submit Album!!">
+
+</form>

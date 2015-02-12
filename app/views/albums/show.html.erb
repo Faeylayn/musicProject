@@ -1,0 +1,20 @@
+<h1> <%= @album.name %> </h1>
+
+
+<ul>
+  <% @tracks.each do |track| %>
+  <li>
+    <a href="<%= track_url(track) %>"> <%= track.title %> </a>
+  </li>
+  <% end %>
+</ul>
+
+<form action="<%= album_tracks_new_url(@album.id) %>" method="post">
+      <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="new">
+    <button>Add a new track to this Album!</button>
+  </form>
+<br>
+  <a href="<%= band_url(@album.band_id) %>"> Go to this Album's band </a>

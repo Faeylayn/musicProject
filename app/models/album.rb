@@ -1,0 +1,23 @@
+class Album < ActiveRecord::Base
+  validates :album_name, :band_id, presence: true
+
+  belongs_to(:band,
+      :class_name => "Band",
+      :foreign_key => :band_id,
+      :primary_key => :id,
+      dependent: :destroy
+  )
+
+  has_many(:tracks,
+      :class_name => "Track",
+      :foreign_key => :album_id,
+      :primary_key => :id
+
+  )
+
+  def name
+    self.album_name
+  end
+
+
+end
