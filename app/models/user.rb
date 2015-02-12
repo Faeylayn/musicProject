@@ -35,6 +35,15 @@ class User < ActiveRecord::Base
     pass.is_password?(value)
   end
 
-  
+  def is_activated?
+    self.activated
+  end
+
+  def is_admin?
+    self.admin
+  end
+
+
+
 
 end

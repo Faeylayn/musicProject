@@ -1,4 +1,25 @@
 class UsersController < ApplicationController
+  before_action :admin?, :only => :index
+
+  def index
+    @users = User.all
+
+    render :index
+
+  end
+
+  def admin
+    @user = User.find(params[:user_id])
+    @user.admin = true unless @user.is_admin?
+    if @user.save
+      redirect_to user_url (@user)
+    else
+      render :index
+    end
+
+
+  end
+
   def show
     @user = User.find(params[:id])
 

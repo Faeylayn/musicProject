@@ -25,3 +25,15 @@
     <input type="hidden" name="_method" value="new">
     <button>Add a new album to this band!</button>
   </form>
+
+
+  <% if current_user.is_admin?%>
+  <form action="<%= band_url(@band.id) %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden"
+   name="authenticity_token"
+   value="<%= form_authenticity_token %>">
+
+    <button>Delete Band</button>
+  </form>
+  <% end %>

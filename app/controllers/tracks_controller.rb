@@ -22,6 +22,18 @@ class TracksController < ApplicationController
 
   end
 
+  def destroy
+    track = Track.find(params[:id])
+    unless current_user.is_admin?
+
+      redirect_to track_url(params[:track_id])
+    end
+    track.destroy!
+    redirect_to bands_url
+  end
+
+
+
   private
   def track_params
     params.require(:track).permit(:album_id, :title, :lyrics, :track_type)

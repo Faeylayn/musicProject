@@ -31,6 +31,10 @@ class BandsController < ApplicationController
 
   def destroy
     band = Band.find(params[:id])
+    unless current_user.is_admin?
+
+      redirect_to new_session_url
+    end
     band.destroy!
     redirect_to bands_url
   end

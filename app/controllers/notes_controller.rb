@@ -14,7 +14,7 @@ class NotesController < ApplicationController
 
   def destroy
     note = Note.find(params[:id])
-    unless note.user_id == current_user.id
+    unless note.user_id == current_user.id || current_user.is_admin?
 
       redirect_to track_url(params[:track_id])
     end

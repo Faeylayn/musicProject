@@ -1,0 +1,21 @@
+<h1> ALL THE USERS!!!! </h1>
+
+
+<ul>
+  <% @users.each do |user| %>
+  <li>
+    <%= user.email %>
+
+    <form action="<%= user_admin_url(user.id) %>" method="post">
+
+      <input type="hidden"
+     name="authenticity_token"
+     value="<%= form_authenticity_token %>">
+
+      <button>Make User Admin</button>
+    </form>
+
+  </li>
+
+  <% end %>
+</ul>

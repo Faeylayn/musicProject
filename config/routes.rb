@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users do
     get '/activate' => 'users#activate'
+    post '/admin' => 'users#admin'
   end
 
   resource :session

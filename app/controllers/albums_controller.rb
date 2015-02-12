@@ -30,6 +30,16 @@ class AlbumsController < ApplicationController
 
   end
 
+  def destroy
+    album = Album.find(params[:id])
+    unless current_user.is_admin?
+
+      redirect_to new_session_url
+    end
+    album.destroy!
+    redirect_to bands_url
+  end
+
   private
 
   def album_params

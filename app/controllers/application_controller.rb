@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless signed_in?
   end
 
+  def admin?
+    redirect_to new_session_url unless current_user && current_user.is_admin?
+  end
+
+
 end

@@ -13,7 +13,7 @@ NOTES
   <li> <%= note.comment %> - <%= note.user.email%>
     <br>
     <br>
-    <% if note.user_id == current_user.id %>
+    <% if note.user_id == current_user.id || current_user.is_admin?%>
     <form action="<%= track_note_url(@track.id, note.id) %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="hidden"
@@ -35,3 +35,14 @@ NOTES
 <br>
 
 <a href="<%= album_url(@track.album_id) %>"> Go to this Album </a>
+
+<% if current_user.is_admin?%>
+<form action="<%= track_url(@track.id) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden"
+ name="authenticity_token"
+ value="<%= form_authenticity_token %>">
+
+  <button>Delete Track</button>
+</form>
+<% end %>
