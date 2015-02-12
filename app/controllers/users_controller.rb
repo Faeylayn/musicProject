@@ -14,7 +14,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password=(params[:user][:password])
+    @user.activation_token = SecureRandom::urlsafe_base64
+    @user.is_activated? = false
     if @user.save
+      
       redirect_to user_url(@user)
     else
       render :new
