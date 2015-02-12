@@ -13,11 +13,12 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
-
+    @band = Band.find(params[:band_id])
+    render :new
   end
 
   def create
-    # params[:album][:band_id] = params[:band_id]
+    @band = Band.find(params[:album][:band_id])
     # fail
     @album = Album.new(album_params)
     if @album.save

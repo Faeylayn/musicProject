@@ -2,6 +2,7 @@ class TracksController < ApplicationController
   before_action :require_login
   def show
     @track = Track.find(params[:id])
+    @notes = @track.notes
 
     render :show
   end

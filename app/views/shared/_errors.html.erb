@@ -1,0 +1,9 @@
+<% unless thing.errors.full_messages == [] %>
+  <ul>
+    <% thing.errors.full_messages.each do |thing| %>
+    <li>
+      <%= thing %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>

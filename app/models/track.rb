@@ -9,6 +9,14 @@ class Track < ActiveRecord::Base
       dependent: :destroy
   )
 
+  has_many(:notes,
+      :class_name => "Note",
+      :foreign_key => :track_id,
+      :primary_key => :id
+      
+  )
+
+
   has_one :band, :through => :album, :source => :band
 
   def name

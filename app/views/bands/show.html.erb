@@ -1,17 +1,20 @@
 <h1> <%= @band.name %> </h1>
-
+<pre> ALBUMS!  </pre>
+<br>
 <table>
   <tr>
-    <th> ALBUMS! </th>
+    <th> </th>
   </tr>
   <% @albums.each do |album| %>
   <tr>
     <a href="<%= album_url(album) %>"> <%= album.name %> </a>
   </tr>
+  <br>
   <% end %>
 
 </table>
 
+<br><br><br><br>
 <a href="<%= bands_url %>"> Index </a>
 <br>
 

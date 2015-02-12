@@ -1,6 +1,6 @@
 <h1> Please submit a new Band </h1>
 
-
+<%= render "shared/errors", thing: @band %>
 <form action="<%= bands_url %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label> Name

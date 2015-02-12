@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   end
 
 
-  resources :tracks, :only => [:index, :create, :edit, :update, :destroy, :show]
+  resources :tracks, :only => [:index, :create, :edit, :update, :destroy, :show] do
+    post '/notes/new' => 'notes#create'
+    resources :notes, :only => [:destroy]
+  end
 
 
 end

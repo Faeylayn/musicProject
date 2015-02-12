@@ -2,7 +2,36 @@
 
 <br>
 <pre>
-<%= @track.lyrics %>
+<%= simple_format(ugly_lyrics(@track.lyrics))  %>
 </pre>
+<br>
+
+NOTES
+<ul>
+
+  <% @notes.each do |note| %>
+  <li> <%= note.comment %> - <%= note.user.email%>
+    <br>
+    <br>
+    <% if note.user_id == current_user.id %>
+    <form action="<%= track_note_url(@track.id, note.id) %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden"
+     name="authenticity_token"
+     value="<%= form_authenticity_token %>">
+
+      <button>Delete Note</button>
+    </form>
+    <% end %>
+  </li>
+  <br>
+  <br>
+  <% end %>
+
+</ul>
+
+<%= render "notes/form" %>
+
+<br>
 
 <a href="<%= album_url(@track.album_id) %>"> Go to this Album </a>
